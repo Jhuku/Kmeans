@@ -22,29 +22,53 @@ public class KMeans {
         }
     }
 
+    public static class TwoPointsDistance{
+        Point p1;
+        Point p2;
+        double dist;
+        TwoPointsDistance(Point p1, Point p2, int dist){
+            this.p1 = p1;
+            this.p2 = p2;
+            this.dist = dist;
+        }
+    }
+
     public static void main(String[] args) {
         List<Point> points = new ArrayList<>();
-        // points.add(new Point('A', 6, 2));
-        // points.add(new Point('B', 7, 3));
-        // points.add(new Point('C', 9, 3));
-        // points.add(new Point('D', 8, 5));
-        // points.add(new Point('E', 9, 8));
-        // points.add(new Point('F', 8, 9));
-        // points.add(new Point('G', 7, 10));
-        // points.add(new Point('H', 6, 11));
-        // points.add(new Point('I', 8, 14));
-        // points.add(new Point('J', 6, 14));
-        // points.add(new Point('K', 4, 14));
-        // points.add(new Point('L', 2, 14));
-        // points.add(new Point('M', 2, 8));
-        // points.add(new Point('N', 2, 6));
-        // points.add(new Point('O', 3, 5));
-        points.add(new Point('A', 2, 2));
-        points.add(new Point('B', 2, 1));
-        points.add(new Point('C', 3, 1));
-        points.add(new Point('D', 10, 10));
-        points.add(new Point('E', 11, 9));
-        points.add(new Point('F', 12, 9));
+        List<TwoPointsDistance> twoPointsDistances = new ArrayList<>();
+        points.add(new Point('A', 6, 2));
+        points.add(new Point('B', 7, 3));
+        points.add(new Point('C', 9, 3));
+        points.add(new Point('D', 8, 5));
+        points.add(new Point('E', 9, 8));
+        points.add(new Point('F', 8, 9));
+        points.add(new Point('G', 7, 10));
+        points.add(new Point('H', 6, 11));
+        points.add(new Point('I', 8, 14));
+        points.add(new Point('J', 6, 14));
+        points.add(new Point('K', 4, 14));
+        points.add(new Point('L', 2, 14));
+        points.add(new Point('M', 2, 8));
+        points.add(new Point('N', 2, 6));
+        points.add(new Point('O', 3, 5));
+
+        for(int i=0; i<points.size(); i++){
+            
+        }
+
+
+        for(int i=0; i<points.size()-1; i++){
+            System.out.println("Distance between ("+points.get(i).name+") and("+points.get(i+1).name+") = "+getDist(points.get(i), points.get(i+1)));
+
+        }
+        // points.add(new Point('A', 2, 2));
+        // points.add(new Point('B', 2, 1));
+        // points.add(new Point('C', 3, 1));
+        // points.add(new Point('D', 10, 10));
+        // points.add(new Point('E', 11, 9));
+        // points.add(new Point('F', 12, 9));
+        // points.add(new Point('G', 6, 6));
+        // points.add(new Point('H', 7, 5));
 
         double[] bounds = new double[4];
         bounds = getBounds(points, bounds);
@@ -52,7 +76,7 @@ public class KMeans {
         for (double i : bounds) {
             System.out.println("" + i);
         }
-        int k = 2;
+        int k = 3;
         Point[] k_points = new Point[k];
         // k_points[0].x=1;
         get_k_random_points(bounds, k_points, k);
